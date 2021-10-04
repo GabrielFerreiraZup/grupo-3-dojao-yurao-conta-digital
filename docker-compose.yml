@@ -1,16 +1,33 @@
-version: '3'
-services:
-  mysql:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'dogaoyurao'
-      MYSQL_USER: 'user'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
-      URL_DATABASE: 'jdbc:mysql://localhost:3305/dogaoyurao'
-    ports:
-      - '3305:3305'
-    expose:
-      - '3305'
+version: '3.5'
 
+services:
+  postgres:
+    image: "postgres:9.6.23"
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: dogaoyurao
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:

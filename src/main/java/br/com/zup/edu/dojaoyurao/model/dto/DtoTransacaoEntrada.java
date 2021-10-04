@@ -15,7 +15,10 @@ public class DtoTransacaoEntrada {
     @NotNull
     private Long idCliente;
 
-
+    public DtoTransacaoEntrada(BigDecimal valor, Long idCliente) {
+        this.valor = valor;
+        this.idCliente = idCliente;
+    }
 
     public BigDecimal getValor() {
         return valor;
