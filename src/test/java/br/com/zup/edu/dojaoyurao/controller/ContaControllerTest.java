@@ -74,11 +74,11 @@ class ContaControllerTest {
             DtoTransacaoEntrada body
     ) throws JsonProcessingException {
 
-    ObjectMapper mapper = new ObjectMapper();
-    mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-    return put(url)
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(mapper.writeValueAsString(body));
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        return put(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(body));
 
     }
 }
