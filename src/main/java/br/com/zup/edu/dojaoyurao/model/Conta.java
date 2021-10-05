@@ -46,7 +46,7 @@ public class Conta {
     public BigDecimal getSaldo() {
         return saldo;
     }
-    public void deposita(BigDecimal valor){
+    public void credita(BigDecimal valor){
         this.saldo = this.saldo.add(valor);
     }
     public void debita(BigDecimal valor){
