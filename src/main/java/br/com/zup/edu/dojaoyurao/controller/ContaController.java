@@ -22,13 +22,13 @@ public class ContaController {
     @Autowired
     ContaRepository contaRepository;
 
- //   @PostMapping("/create/{}")
- //   @Transactional
- //   public ResponseEntity<?> criar(@RequestBody @Valid DtoTransacaoEntrada request){
- //       Conta novaConta = new Conta("1",request.getIdCliente(),request.getValor());
- //       contaRepository.save(novaConta);
- //       return ResponseEntity.ok().build();
- //   }
+    @PostMapping("/create/")
+    @Transactional
+    public ResponseEntity<?> criar(@RequestBody @Valid DtoTransacaoEntrada request){
+        Conta novaConta = new Conta("1",request.getIdCliente(),request.getValor());
+        contaRepository.save(novaConta);
+        return ResponseEntity.ok().build();
+    }
 
     @PutMapping("/{numeroConta}/credita")
     @Transactional
